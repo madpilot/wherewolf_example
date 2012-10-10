@@ -6,9 +6,7 @@
     = flash[:error]
     - if @error
       %pre
-        = params[:query]
-        %br
-        = (' ' * @error.position) + "^"
+        = raw "#{params[:query][0..[@error.position - 2, 0].max]}<strong style=\"border: 1px solid #B94A48; background-color: #EED3D7\">#{params[:query][[@error.position - 1, 0].max]}</strong>#{params[:query][@error.position..-1]}"
 
 
 %p Enter a search query below
