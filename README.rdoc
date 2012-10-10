@@ -1,1 +1,5 @@
+= Wherewolf example
 
+This is the source code for the example Wherewolf site that is running at: http://wherewolf.herokuapp.com/
+
+To learn more about Wherewolf, check out the github page: http://github.com/madpilot/wherewolf
