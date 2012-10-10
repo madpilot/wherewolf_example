@@ -4,6 +4,11 @@
   .alert.alert-error
     %h4 Error
     = flash[:error]
+    - if @error
+      %pre
+        = params[:query]
+        %br
+        = (' ' * @error.position) + "^"
 
 
 %p Enter a search query below
@@ -24,6 +29,9 @@
   %br
   %a{ :href => players_path(:query => '(first_cap >= 1899-06-24 && first_cap <= 1920-07-24) || position = flanker') }
     = "(first_cap >= 1899-06-24 && first_cap <= 1920-07-24) || position = flanker"
+  %br
+  %a{ :href => players_path(:query => 'name ~= "Patrick%"') }
+    = "name ~= \"Patrick%\""
 
 %table{ :class => 'table table-striped' }
   %thead
