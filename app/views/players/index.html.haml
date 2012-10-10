@@ -1,0 +1,44 @@
+%h1 Australian Rubgy Union Players
+
+- if flash[:error]
+  .alert.alert-error
+    %h4 Error
+    = flash[:error]
+
+
+%p Enter a search query below
+
+= form_tag players_path, :method => :get, :class => 'form-search' do
+  .input-append
+    %input{ :type => 'text', :name => 'query', :id => 'query', :value => params[:query], :class => 'input-xxlarge' }
+    %button{ :type => 'submit' }
+      Search
+
+.well.well-small
+  %p Examples
+  %a{ :href => players_path(:query => 'position=prop && first_cap > 2000-01-01') }
+    = "position=prop && first_cap > 2000-01-01"
+  %br
+  %a{ :href => players_path(:query => 'number < 200 && position != "no. 8"') }
+    = "number < 200 && position != \"no. 8\""
+  %br
+  %a{ :href => players_path(:query => '(first_cap >= 1899-06-24 && first_cap <= 1920-07-24) || position = flanker') }
+    = "(first_cap >= 1899-06-24 && first_cap <= 1920-07-24) || position = flanker"
+
+%table{ :class => 'table table-striped' }
+  %thead
+    %tr
+      %th Number
+      %th Name
+      %th Position
+      %th First Cap
+      %th Opposition
+  %tbody
+    - @players.each do |player|
+      %tr
+        %td= player.number
+        %td= player.name
+        %td= player.position
+        %td= player.first_cap
+        %td= player.opposition
+        
