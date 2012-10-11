@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.from_query(params[:query]) if params[:query]
+    @players = Player.where_query(params[:query]) if params[:query]
     @players = Player.all unless params[:query]
   rescue Wherewolf::ParseError => e
     @players = Player.all
