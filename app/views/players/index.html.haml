@@ -13,7 +13,9 @@
 
 = form_tag players_path, :method => :get, :class => 'form-search' do
   .input-append
-    %input{ :type => 'text', :name => 'query', :id => 'query', :value => params[:query], :class => 'input-xxlarge' }
+    %input{ :type => 'text', :name => 'query', :id => 'query', :value => params[:query], :class => 'input-xxlarge', :placeholder => 'Query (eg position = lock)' }
+  .input-append
+    %input{ :type => 'text', :name => 'order', :id => 'order', :value => params[:order], :class => 'input-large', :placeholder => 'Order (eg name asc)' }
     %button{ :type => 'submit' }
       Search
 
